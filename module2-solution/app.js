@@ -59,6 +59,10 @@ var toBuyItems= [
   {
     name: "Chocolate",
     quantity: "5"
+  },
+  {
+    name: "Berries",
+    quantity: "6"
   }
 ];
 var boughtItems=[];
