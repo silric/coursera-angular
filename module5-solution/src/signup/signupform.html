@@ -1,0 +1,48 @@
+
+<link rel="stylesheet" href="css/signup.css">
+
+<div class="signupform">
+<div class="container">
+  <div class="jumbotron">
+    <h1 >SIGN UP Form</h1>
+      <fieldset>
+      <legend>Sign Up</legend>
+      <form name='myForm'>
+        <input type="text" name="fName" placeholder="First Name"
+        ng-model="SUCtrl.user.fname"
+        required
+        minlength="1"
+        ng-maxlength="10">
+        <span ng-if="(myForm.fName.$error.minlength||myForm.fName.$error.maxlength||myForm.fName.$error.required) && myForm.fName.$touched">First Name must be at least 1 letter long and less than 10 letters long.</span>
+        <br>
+        <input type="text" name="lName" placeholder="Last Name"
+        ng-model="SUCtrl.user.lname"
+        required
+        minlength="1"
+        ng-maxlength="10">
+        <span ng-if="(myForm.lName.$error.minlength||myForm.lName.$error.maxlength||myForm.lName.$error.required) && myForm.lName.$touched">Last Name must be at least 1 letter long and less than 10 letters long.</span>
+        <br>
+        <input type="email" name="eMail" placeholder="Email Address"
+        ng-model="SUCtrl.user.email"
+        required>
+        <span ng-if="myForm.eMail.$invalid && myForm.eMail.$touched">
+        Must be a valid email address: handle@domain format
+        </span>
+        <br>
+        <input type="text" name="phoneNum" placeholder="Phone ###-###-####"
+        ng-model="SUCtrl.user.phonenum"
+        pattern="(\d{3})-(\d{3})-(\d{4})"
+        required>
+        <span ng-if="myForm.phoneNum.$invalid && myForm.phoneNum.$touched">
+        Phone must be in the format ###-###-####
+        </span>
+        <button
+          ng-disabled="myForm.$invalid"
+          ng-click="SUCtrl.submit()">
+          Submit
+        </button>
+      </form>
+      </fieldset>
+  </div>
+</div>
+</div>
