@@ -21,8 +21,13 @@ function routeConfig ($stateProvider) {
     })
     .state('signupform', {
       url: '/signup',
-      controller: 'SignUpController as SUCtrl',
-      templateUrl: 'src/signup/signupform.html'
+      controller: 'SignUpController as suctrl',
+      templateUrl: 'src/signup/signupform.html',
+      resolve: {
+        cgories: ['MenuDataService',function (MenuDataService) {
+          return MenuDataService.getAllCategories();
+        }]
+      }
     })
     .state('public.menu', {
       url: '/menu',
