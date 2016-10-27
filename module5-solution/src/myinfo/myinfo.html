@@ -3,7 +3,7 @@
 
 <div class="myinfo">
 <div class="container">
-  <span ng-if="infoctrl.fname==''" class="error">Not Signed Up Yet. Sign up Now!</span>
+  <span ng-if="infoctrl.fname==''" class="error">Not Signed Up Yet. <a href="#" ui-sref="signupform">Sign up Now!</a></span>
   <div ng-hide="infoctrl.fname==''" align=left class="jumbotron">
   First name is <u><b><i>{{infoctrl.fname}}</i></b></u>
   <br>
