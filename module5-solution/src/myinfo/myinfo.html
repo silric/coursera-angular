@@ -3,7 +3,8 @@
 
 <div class="myinfo">
 <div class="container">
-  <div align=left class="jumbotron">
+  <span ng-if="infoctrl.fname==''" class="error">Not Signed Up Yet. Sign up Now!</span>
+  <div ng-hide="infoctrl.fname==''" align=left class="jumbotron">
   First name is <u><b><i>{{infoctrl.fname}}</i></b></u>
   <br>
   Last name is <u><b><i>{{infoctrl.lname}}</i></b></u>
@@ -17,6 +18,7 @@
   Favorite Dish name is <u><b><i>{{infoctrl.favname}}</i></b></u>
   <br>
   Favorite Dish description is <u><b><i>{{infoctrl.description}}</i></b></u>
+  <br>
   </div>
 </div>
 </div>
