@@ -6,29 +6,33 @@ angular.module('restaurant')
 SignUpController.$inject=['cgories','MenuDataService'];
 function SignUpController(cgories,MenuDataService) {
   var ctrl=this;
-  var found=0;
-  var lookup_done=0;
   ctrl.cgories=cgories;
   ctrl.user = {
     fname:'',
     lname:'',
     email:'',
+    description:'',
+    favname:'',
     favsname:'',
     phonenum:''};
   ctrl.submit = function () {
-    found=0;
     console.log("fname is "+ctrl.user.fname+" favorite short name "+ctrl.user.favsname);
-    var menuItem=MenuDataService.getItem(ctrl.user.favsname);
-    menuItem.then(function(response) {
-      if (response.status!==200) {
-        console.log("error access short name "+ctrl.user.favsname);
-        found=0;
-        lookup_done=1;
-      } else {
+    MenuDataService.getItem(ctrl.user.favsname) 
+    .then(function(response) {
+
+
         console.log("was able to access short name "+ctrl.user.favsname);
-        lookup_done=1;
-        found=1;
-      };
+        ctrl.found=1;
+        ctrl.lookup_done=1;
+        ctrl.allgood=1;
+        ctrl.user.favname    =response.data.name;
+        ctrl.user.description=response.data.description;
+        MenuDataService.setInfo(ctrl.user);
+    }, function(error) {
+        console.log("error access short name "+ctrl.user.favsname);
+        ctrl.found=0;
+        ctrl.lookup_done=1;
+        ctrl.allgood=0;
     });
   }
 }

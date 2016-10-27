@@ -1,4 +1,7 @@
-.signupform {
+.signupform .container .jumbotron {
   color: #000;
+}
+.signupform .container .jumbotron .submitbutton{
+  background-color: #777;
 }
 

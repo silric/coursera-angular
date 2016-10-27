@@ -12,6 +12,7 @@
         required
         minlength="1"
         ng-maxlength="10">
+        <span class="help-block">First name must be between 1 and 10 letters long.</span>
         <span ng-if="(myForm.fName.$error.minlength||myForm.fName.$error.maxlength||myForm.fName.$error.required) && myForm.fName.$touched">First Name must be at least 1 letter long and less than 10 letters long.</span>
         <br>
         <input type="text" name="lName" placeholder="Last Name"
@@ -19,6 +20,7 @@
         required
         minlength="1"
         ng-maxlength="10">
+        <span class="help-block">Last name must be between 1 and 10 letters long.</span>
         <span ng-if="(myForm.lName.$error.minlength||myForm.lName.$error.maxlength||myForm.lName.$error.required) && myForm.lName.$touched">Last Name must be at least 1 letter long and less than 10 letters long.</span>
         <br>
         <input type="email" name="eMail" placeholder="Email Address"
@@ -39,11 +41,13 @@
         <span ng-if="myForm.phoneNum.$invalid && myForm.phoneNum.$touched">
         Phone must be in the format ###-###-####
         </span>
-        <button
+        <br>
+        <button class="submitbutton"
           ng-disabled="myForm.$invalid"
           ng-click="suctrl.submit()">
           Submit
         </button>
+        <span ng-if="suctrl.allgood">Your information has been saved.</span>
       </form>
       </fieldset>
   </div>

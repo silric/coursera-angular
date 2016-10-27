@@ -29,6 +29,16 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
+    .state('myinfo', {
+      url: '/myinfo',
+      controller: 'myInfoController as infoctrl',
+      templateUrl: 'src/myinfo/myinfo.html',
+      resolve: {
+        info: ['MenuDataService',function (MenuDataService) {
+          return MenuDataService.getInfo();
+        }]
+      }
+    })
     .state('public.menu', {
       url: '/menu',
       templateUrl: 'src/public/menu/menu.html',
