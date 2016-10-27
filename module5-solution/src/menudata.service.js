@@ -10,6 +10,7 @@ angular.module('data')
 MenuDataService.$inject=['$http','ApiBasePath']
 function MenuDataService($http,ApiBasePath) {
   var service = this;
+  service.BasePath=ApiBasePath;
   service.fname      ="";
   service.lname      ="";
   service.email      ="";
