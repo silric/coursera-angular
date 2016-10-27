@@ -7,6 +7,7 @@ angular.module('restaurant')
 myInfoController.$inject=['info','MenuDataService'];
 function myInfoController(info,MenuDataService) {
   var ctrl = this;
+  ctrl.basepath=MenuDataService.BasePath;
   ctrl.fname      =info.fname;
   ctrl.lname      =info.lname;
   ctrl.email      =info.email;
