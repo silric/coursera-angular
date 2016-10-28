@@ -17,23 +17,25 @@ function SignUpController(cgories,MenuDataService) {
     phonenum:''};
   ctrl.submit = function () {
     console.log("fname is "+ctrl.user.fname+" favorite short name "+ctrl.user.favsname);
-    MenuDataService.getItem(ctrl.user.favsname) 
-    .then(function(response) {
+      MenuDataService.getItem(ctrl.user.favsname||"") 
+      .then(function(response) {
 
 
-        console.log("was able to access short name "+ctrl.user.favsname);
-        ctrl.found=1;
-        ctrl.lookup_done=1;
-        ctrl.allgood=1;
-        ctrl.user.favname    =response.data.name;
-        ctrl.user.description=response.data.description;
-        MenuDataService.setInfo(ctrl.user);
-    }, function(error) {
-        console.log("error access short name "+ctrl.user.favsname);
-        ctrl.found=0;
-        ctrl.lookup_done=1;
-        ctrl.allgood=0;
-    });
+          console.log("was able to access short name "+ctrl.user.favsname);
+          ctrl.found=1;
+          ctrl.lookup_done=1;
+          ctrl.allgood=1;
+          ctrl.user.favname    =response.data.name;
+          ctrl.user.description=response.data.description;
+          MenuDataService.setInfo(ctrl.user);
+          return response.data;
+      }).catch(function(error) {
+          console.log("error access short name "+ctrl.user.favsname);
+          ctrl.found=0;
+          ctrl.lookup_done=1;
+          ctrl.allgood=0;
+          return error;
+      });
   }
 }
 

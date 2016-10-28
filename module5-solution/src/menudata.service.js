@@ -19,7 +19,7 @@ function MenuDataService($http,ApiBasePath) {
   service.favname    ="";
   service.description="";
   service.getAllCategories=function() {
-    return $http({
+    $http({
       method: "GET",
       url: ApiBasePath+"/categories.json"
     }).then(function (result) {
@@ -48,16 +48,11 @@ function MenuDataService($http,ApiBasePath) {
     return info;
   };
   service.getItem=function(shortName) {
-    return $http({
+    var promise = $http({
       method: "GET",
       url: ApiBasePath+"/menu_items/"+shortName+".json"
-    }).then(function (result) {
-      console.log(result.data);
-      return result;
-    }, function (error) {
-      console.log(error.status);
-      return error;
     });
+    return promise;
   };
 
 
